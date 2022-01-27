@@ -15,6 +15,6 @@ class Person
   private
 
   def of_age?
-    true unless @age >= 18
+    @age >= 18
   end
 end

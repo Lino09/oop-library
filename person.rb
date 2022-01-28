@@ -18,7 +18,7 @@ class Person
   private
 
   def of_age?
-    @age >= 18
+    true unless @age < 18
   end
 
   def validate_name

@@ -60,4 +60,16 @@ class Main
 
     start
   end
+  def create_book
+    print 'Title: '.blue
+    title = gets.chomp
+    print 'Author: '.blue
+    author = gets.chomp
+    @book_list << Book.new(title, author)
+    puts "Book: '#{title}' has been created successfully".green
+
+    start
+  end
+
+
   end

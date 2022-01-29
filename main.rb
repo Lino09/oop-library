@@ -6,7 +6,6 @@ require './teacher'
 require './classroom'
 require 'colorize'
 
-
 class Main
   attr_accessor :book_list, :people_list, :rental_list
 
@@ -60,6 +59,7 @@ class Main
 
     start
   end
+
   def create_book
     print 'Title: '.blue
     title = gets.chomp
@@ -94,6 +94,7 @@ class Main
 
     start
   end
+
   def create_rental
     puts 'Select a book from the following list by number'.blue
     @book_list.each_with_index.map do |book, index|
@@ -114,6 +115,7 @@ class Main
     puts 'Rental has been created successfully'.green
     start
   end
+
   def show_rentals_for_person
     print 'ID of person: '.blue
     person_id = gets.chomp.to_i

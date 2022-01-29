@@ -1,3 +1,12 @@
+# rubocop:disable Metrics/CyclomaticComplexity
+require './book'
+require './person'
+require './student'
+require './teacher'
+require './classroom'
+require 'colorize'
+
+
 class Main
   attr_accessor :book_list, :people_list, :rental_list
 
@@ -26,4 +35,29 @@ class Main
     when '6' then show_rentals_for_person
     when '7' then puts 'See you soon!'
     end
+  end
+
+  # rubocop:enable Metrics/CyclomaticComplexity
+
+  def create_person
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '.blue
+    status = gets.chomp
+    print 'Age: '.blue
+    age = gets.chomp
+    print 'Name: '.blue
+    name = gets.chomp
+    if status == '1'
+      print 'Has a parent permission? [Y/N] '.blue
+      permission = gets.chomp.downcase
+      @people_list << Student.new(age, name, parent_permission: permission == 'y')
+      puts 'Student has been created successfully'.green
+    else
+      print 'Specialization: '.blue
+      spec = gets.chomp
+      @people_list << Teacher.new(spec, age, name)
+      puts 'Teacher has been created successfully'.green
+    end
+
+    start
+  end
   end

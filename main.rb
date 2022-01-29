@@ -121,6 +121,11 @@ class Main
     person.rentals.map { |rent| puts "Data: #{rent.date}, Book: \"#{rent.book.title}\", by #{rent.book.author}".yellow }
     start
   end
+end
 
+def run
+  app = Main.new
+  app.start
+end
 
-  end
+run

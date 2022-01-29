@@ -71,5 +71,29 @@ class Main
     start
   end
 
+  def show_book_list
+    if @book_list.empty?
+      puts '( No Books Found )'.red
+    else
+      @book_list.each_with_index.map do |book, index|
+        puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}".yellow
+      end
+    end
+
+    start
+  end
+
+  def show_people_list
+    if @people_list.empty?
+      puts '( No People Found )'.red
+    else
+      @people_list.each_with_index.map do |person, index|
+        puts "#{index})[#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}".yellow
+      end
+    end
+
+    start
+  end
+
 
   end

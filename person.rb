@@ -10,7 +10,7 @@ class Person
     @corrector = Corrector.new
     @rentals = []
   end
-  attr_reader :id
+  attr_reader :id, :rentals
   attr_accessor :age, :name
 
   def can_use_services?

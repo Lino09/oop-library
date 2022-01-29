@@ -94,6 +94,33 @@ class Main
 
     start
   end
+  def create_rental
+    puts 'Select a book from the following list by number'.blue
+    @book_list.each_with_index.map do |book, index|
+      puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}".yellow
+    end
+    index_book = gets.chomp.to_i
+    puts 'Select a person from the following list by number'.blue
+    @people_list.each_with_index.map do |person, index|
+      puts "#{index})[#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}".yellow
+    end
+    index_person = gets.chomp.to_i
+    print 'Date: '.blue
+    rent_date = gets.chomp
+    rental = Rental.new(rent_date)
+    @book_list[index_book].add_rental(rental)
+    @people_list[index_person].add_rental(rental)
+    @rental_list << rental
+    puts 'Rental has been created successfully'.green
+    start
+  end
+  def show_rentals_for_person
+    print 'ID of person: '.blue
+    person_id = gets.chomp.to_i
+    person = @people_list.select { |target| target.id == person_id }[0]
+    person.rentals.map { |rent| puts "Data: #{rent.date}, Book: \"#{rent.book.title}\", by #{rent.book.author}".yellow }
+    start
+  end
 
 
   end
